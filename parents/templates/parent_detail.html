@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Parent Detail</h2>
+    <p><strong>ID:</strong> {{ parent.id }}</p>
+    <p><strong>First Name:</strong> {{ parent.first_name }}</p>
+    <p><strong>Last Name:</strong> {{ parent.last_name }}</p>
+    <p><strong>Phone Number:</strong> {{ parent.phone_number }}</p>
+    <p><strong>Email:</strong> {{ parent.email }}</p>
+    <p><strong>Address:</strong> {{ parent.address }}</p>
+    <p><strong>Relationship to Child:</strong> {{ parent.relationship_to_child }}</p>
+    <a href="{% url 'dashboard:parents:parent_list' %}" class="btn btn-secondary">Back to List</a>
+</div>
+{% endblock %}

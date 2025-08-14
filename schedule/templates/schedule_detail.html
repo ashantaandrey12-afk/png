@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Schedule Detail</h2>
+    <p><strong>ID:</strong> {{ schedule.id }}</p>
+    <p><strong>Classroom:</strong> {{ schedule.classroom }}</p>
+    <p><strong>Date:</strong> {{ schedule.date }}</p>
+    <p><strong>Time:</strong> {{ schedule.time }}</p>
+    <p><strong>Activity:</strong> {{ schedule.activity }}</p>
+    <a href="{% url 'schedule:schedule_list' %}" class="btn btn-secondary">Back to List</a>
+</div>
+{% endblock %}

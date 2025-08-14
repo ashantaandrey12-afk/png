@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-3">Schedule List</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Classroom</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Activity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for schedule in schedules %}
+            <tr>
+                <td>{{ schedule.id }}</td>
+                <td>{{ schedule.classroom }}</td>
+                <td>{{ schedule.date }}</td>
+                <td>{{ schedule.time }}</td>
+                <td>{{ schedule.activity }}</td>
+                <td>
+                    <a href="{% url 'schedule:schedule_detail' schedule.pk %}" class="btn btn-info btn-sm">View</a>
+                    <a href="{% url 'schedule:schedule_edit' schedule.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'schedule:schedule_delete' schedule.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
