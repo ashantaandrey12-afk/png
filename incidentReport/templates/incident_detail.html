@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Incident Report Detail</h2>
+    <p><strong>ID:</strong> {{ incident.id }}</p>
+    <p><strong>Child:</strong> {{ incident.child }}</p>
+    <p><strong>Date:</strong> {{ incident.date }}</p>
+    <p><strong>Description:</strong> {{ incident.description }}</p>
+    <p><strong>Severity:</strong> {{ incident.severity }}</p>
+    <a href="{% url 'dashboard:incidentReport:incidents_list' %}" class="btn btn-secondary">Back to List</a>
+</div>
+{% endblock %}

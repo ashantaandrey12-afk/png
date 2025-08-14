@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Profile: {{ child.first_name }} {{ child.last_name }}</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{ child.photo.url }}" alt="Child Photo" class="img-fluid rounded">
+        </div>
+        <div class="col-md-8">
+            <h4>General Information</h4>
+            <p><strong>Date of Birth:</strong> {{ child.date_of_birth }}</p>
+            <p><strong>Age:</strong> {{ child.age }} years old</p>
+            <p><strong>Gender:</strong> {{ child.get_gender_display }}</p>
+            <p><strong>Enrollment Date:</strong> {{ child.enrollment_date }}</p>
+
+            <h4>Medical Information</h4>
+            <p>{{ child.medical_info }}</p>
+
+            <h4>Notes</h4>
+            <p>{{ child.notes }}</p>
+        </div>
+    </div>
+    <a href="{% url 'children:child_list' %}" class="btn btn-primary">Back to Children List</a>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    .container {
+        max-width: 900px;
+    }
+    .row {
+        margin-top: 30px;
+    }
+    img {
+        max-height: 250px;
+        object-fit: cover;
+    }
+</style>
+{% endblock %}

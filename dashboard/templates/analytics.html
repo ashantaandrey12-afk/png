@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Dashboard Analytics</h2>
+    <div class="row mt-4">
+        <!-- Total Counts -->
+        <div class="col-md-3">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Total Children</h5>
+                    <p class="card-text">{{ total_children }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Total Staff</h5>
+                    <p class="card-text">{{ total_staff }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Total Classrooms</h5>
+                    <p class="card-text">{{ total_classrooms }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Attendance Records</h5>
+                    <p class="card-text">{{ total_attendance }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-danger mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Incident Reports</h5>
+                    <p class="card-text">{{ total_incidents }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Attendance Chart -->
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <h3>Attendance Breakdown</h3>
+            <canvas id="attendanceChart"></canvas>
+        </div>
+        <div class="col-md-6">
+            <h3>Staff Specialties</h3>
+            <canvas id="staffSpecialtyChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Recent Incidents -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h3>Recent Incident Reports</h3>
+            <ul class="list-group">
+                {% for incident in recent_incidents %}
+                <li class="list-group-item">
+                    <strong>{{ incident.date }}</strong>: {{ incident.description }}
+                    <br>
+                    <small>Action Taken: {{ incident.action_taken }}</small>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Include Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Attendance Chart Data
+    const attendanceData = {
+        labels: Object.keys({{ attendance_counts|safe }}),
+        datasets: [{
+            label: 'Attendance Count',
+            data: Object.values({{ attendance_counts|safe }}),
+            backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+            borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
+            borderWidth: 1
+        }]
+    };
+
+    const ctxAttendance = document.getElementById('attendanceChart').getContext('2d');
+    new Chart(ctxAttendance, {
+        type: 'pie',
+        data: attendanceData
+    });
+
+    // Staff Specialty Chart Data
+    const specialtyData = {
+        labels: Object.keys({{ specialty_counts|safe }}),
+        datasets: [{
+            label: 'Staff Count by Specialty',
+            data: Object.values({{ specialty_counts|safe }}),
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    const ctxSpecialty = document.getElementById('staffSpecialtyChart').getContext('2d');
+    new Chart(ctxSpecialty, {
+        type: 'bar',
+        data: specialtyData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

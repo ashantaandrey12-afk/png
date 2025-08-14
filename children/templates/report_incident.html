@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Report Incident for {{ child.first_name }} {{ child.last_name }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="description" class="form-label">Incident Description</label>
+            <textarea name="description" id="description" class="form-control" rows="4" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="action_taken" class="form-label">Action Taken</label>
+            <textarea name="action_taken" id="action_taken" class="form-control" rows="4" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="staff_involved" class="form-label">Staff Involved</label>
+            <input type="text" name="staff_involved" id="staff_involved" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-danger">Submit Incident</button>
+        <a href="{% url 'children:child_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    .container {
+        max-width: 700px;
+    }
+    textarea {
+        resize: none;
+    }
+</style>
+{% endblock %}

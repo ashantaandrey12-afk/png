@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-3">Incident Reports List</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Child</th>
+                <th>Date</th>
+                <th>Severity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for incident in incidents %}
+            <tr>
+                <td>{{ incident.id }}</td>
+                <td>{{ incident.child }}</td>
+                <td>{{ incident.date }}</td>
+                <td>{{ incident.severity }}</td>
+                <td>
+                    <a href="{% url 'dashboard:incidentReport:incident_detail' incident.pk %}" class="btn btn-info btn-sm">View</a>
+                    <a href="{% url 'dashboard:incidentReport:incident_edit' incident.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'dashboard:incidentReport:incident_confirm_delete' incident.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

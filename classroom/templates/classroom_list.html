@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-3">Classroom List</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Capacity</th>
+                <th>Teacher In Charge</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for classroom in classrooms %}
+            <tr>
+                <td>{{ classroom.id }}</td>
+                <td>{{ classroom.name }}</td>
+                <td>{{ classroom.capacity }}</td>
+                <td>{{ classroom.teacher_in_charge }}</td>
+                <td>
+                    <a href="{% url 'classroom:classroom_detail' classroom.pk %}" class="btn btn-info btn-sm">View</a>
+                    <a href="{% url 'classroom:classroom_edit' classroom.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'classroom:classroom_delete' classroom.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Attendance Detail</h2>
+    <p><strong>ID:</strong> {{ attendance.id }}</p>
+    <p><strong>Child:</strong> {{ attendance.child }}</p>
+    <p><strong>Date:</strong> {{ attendance.date }}</p>
+    <p><strong>Status:</strong> {{ attendance.status }}</p>
+    <a href="{% url 'attendance:attendance_list' %}" class="btn btn-secondary">Back to List</a>
+</div>
+{% endblock %}

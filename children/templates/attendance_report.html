@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Attendance Report</h2>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Child</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in attendance_list %}
+            <tr>
+                <td>{{ record.child.first_name }} {{ record.child.last_name }}</td>
+                <td>{{ record.date }}</td>
+                <td>{{ record.status }}</td>
+                <td>{{ record.notes }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'children:child_list' %}" class="btn btn-primary">Back to Children List</a>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    .container {
+        max-width: 800px;
+    }
+    table th, table td {
+        text-align: center;
+    }
+</style>
+{% endblock %}
