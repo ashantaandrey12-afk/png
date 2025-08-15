@@ -106,16 +106,16 @@
     </form>
 
     <!-- Add Child Button -->
-    <a href="{% url 'dashboard:staff:add_staff' %}" class="add-button">Add Staff</a>
+    <a href="{% url 'staff:add_staff' %}" class="add-button">Add Staff</a>
 
     <table>
         <thead>
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Role</th>
-                <th>Contact</th>
-                <th>Hire date</th>
+                <th>Position</th>
+                <th>Phone Number</th>
+                <th>Employment Date</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -124,12 +124,12 @@
             <tr>
                 <td>{{ staff.first_name }}</td>
                 <td>{{ staff.last_name }}</td>
-                <td>{{ staff.role }}</td> <!-- Display calculated age -->
-                <td>{{ staff.contact }}</td>
-                <td>{{ staff.hire_date }}</td>
+                <td>{{ staff.position }}</td>
+                <td>{{ staff.phone_number }}</td>
+                <td>{{ staff.employment_date }}</td>
                 <td>
-                    <a href="{% url 'dashboard:staff:edit_staff' staff.pk %}" class="edit-button">Edit</a>
-                    <a href="{% url 'dashboard:staff:delete_staff' staff.pk %}" class="delete-button">Delete</a>
+                    <a href="{% url 'staff:edit_staff' staff.pk %}" class="edit-button">Edit</a>
+                    <a href="{% url 'staff:delete_staff' staff.pk %}" class="delete-button">Delete</a>
                 </td>
             </tr>
             {% endfor %}

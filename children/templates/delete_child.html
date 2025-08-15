@@ -58,7 +58,7 @@
         <form method="POST">
             {% csrf_token %}
             <button type="submit">Confirm Delete</button>
-            <a href="{% url 'dashboard:children:child_list' %}" class="cancel">Cancel</a>
+            <a href="{% url 'children:child_list' %}" class="cancel">Cancel</a>
         </form>
     </div>
 </body>
