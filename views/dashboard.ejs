@@ -1,0 +1,125 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Dashboard Overview</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group me-2">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-3">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="card-title">
+                                        <i class="fas fa-child me-2"></i>Children
+                                    </h6>
+                                    <h2 class="mb-0"><%= counts.children || 0 %></h2>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-child fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="card-title">
+                                        <i class="fas fa-users me-2"></i>Staff
+                                    </h6>
+                                    <h2 class="mb-0"><%= counts.staff || 0 %></h2>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-users fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="card-title">
+                                        <i class="fas fa-clipboard-check me-2"></i>Attendance
+                                    </h6>
+                                    <h2 class="mb-0"><%= counts.attendance || 0 %></h2>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-clipboard-check fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card bg-danger text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="card-title">
+                                        <i class="fas fa-exclamation-triangle me-2"></i>Incidents
+                                    </h6>
+                                    <h2 class="mb-0"><%= counts.incidents || 0 %></h2>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-exclamation-triangle fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Quick Actions</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <a href="/children/add" class="btn btn-outline-primary w-100">
+                                        <i class="fas fa-plus me-2"></i>Add Child
+                                    </a>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <a href="/staff/add" class="btn btn-outline-success w-100">
+                                        <i class="fas fa-plus me-2"></i>Add Staff
+                                    </a>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <a href="/parents/add" class="btn btn-outline-info w-100">
+                                        <i class="fas fa-plus me-2"></i>Add Parent
+                                    </a>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <a href="/attendance/add" class="btn btn-outline-warning w-100">
+                                        <i class="fas fa-plus me-2"></i>Mark Attendance
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

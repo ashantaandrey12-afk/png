@@ -1,0 +1,106 @@
+<% if (!user) { %>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success mb-4">
+        <div class="container my-3">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-child me-2"></i>Childcare Management System
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="/signup">Signup</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<% } %>
+
+<section class="text-center mb-5">
+    <div class="container">
+        <h1 class="text-success h1 mb-4">Welcome to the Childcare Management System</h1>
+        <p class="lead">Our system helps manage daily operations, track child progress, organize staff schedules, and streamline administrative tasks to provide the best care and service for your children.</p>
+        <% if (!user) { %>
+        <div class="mt-4">
+            <a href="/login" class="btn btn-success btn-lg me-3">Login</a>
+            <a href="/signup" class="btn btn-outline-success btn-lg">Sign Up</a>
+        </div>
+        <% } else { %>
+        <div class="mt-4">
+            <a href="/dashboard" class="btn btn-success btn-lg">Go to Dashboard</a>
+        </div>
+        <% } %>
+    </div>
+</section>
+
+<section class="mb-5">
+    <div class="container text-center">
+        <h2 class="text-success">About Us</h2>
+        <p class="mt-3">Welcome to our Childcare Management System, where we are committed to providing a nurturing and safe environment for the children in our care. Our mission is to create a space where children can grow, learn, and develop emotionally, socially, and intellectually.</p>
+    </div>
+</section>
+
+<section class="d-flex justify-content-around align-items-center mb-5">
+    <div class="text-center">
+        <h2 class="display-4 text-success">150+</h2>
+        <p>Children Enrolled</p>
+    </div>
+    <div class="text-center">
+        <h2 class="display-4 text-success">15+</h2>
+        <p>Staff Members</p>
+    </div>
+    <div class="text-center">
+        <h2 class="display-4 text-success">20</h2>
+        <p>Classrooms</p>
+    </div>
+</section>
+
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">What Parents Are Saying</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <blockquote class="blockquote">
+                            <p>"This center has been wonderful for our child's development. The staff are attentive and professional."</p>
+                            <footer class="blockquote-footer">Parent A</footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <blockquote class="blockquote">
+                            <p>"The learning environment here is fantastic. My child loves coming to school every day!"</p>
+                            <footer class="blockquote-footer">Parent B</footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-dark text-white py-4 mt-5">
+    <div class="container text-center">
+        <h2 class="text-success">Contact Us</h2>
+        <p>Email: contact@childcarecenter.com | Phone: +1 234 567 890</p>
+        <p>Address: 123 Main Street, Ruhango, Rwanda</p>
+        <div>
+            <a href="#" class="text-white me-3">Privacy Policy</a>
+            <a href="#" class="text-white">Terms of Service</a>
+        </div>
+    </div>
+</footer>

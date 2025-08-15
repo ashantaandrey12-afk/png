@@ -1,0 +1,80 @@
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Staff Management</h2>
+        <a href="/staff/add" class="btn btn-success">
+            <i class="fas fa-plus me-2"></i>Add Staff
+        </a>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Photo</th>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Employment Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (staff && staff.length > 0) { %>
+                            <% staff.forEach(member => { %>
+                            <tr>
+                                <td>
+                                    <% if (member.photo) { %>
+                                        <img src="/uploads/<%= member.photo %>" alt="Staff Photo" class="rounded-circle" width="40" height="40">
+                                    <% } else { %>
+                                        <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            <i class="fas fa-user text-white"></i>
+                                        </div>
+                                    <% } %>
+                                </td>
+                                <td><%= member.first_name %> <%= member.last_name %></td>
+                                <td><%= member.position %></td>
+                                <td><%= member.email || 'N/A' %></td>
+                                <td><%= member.phone_number %></td>
+                                <td><%= member.employment_date %></td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-sm btn-outline-primary" onclick="editStaff(<%= member.id %>)">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-danger" onclick="deleteStaff(<%= member.id %>)">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="7" class="text-center text-muted">No staff members found</td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function editStaff(id) {
+    window.location.href = `/staff/edit/${id}`;
+}
+
+function deleteStaff(id) {
+    if (confirm('Are you sure you want to delete this staff member?')) {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = `/staff/delete/${id}`;
+        document.body.appendChild(form);
+        form.submit();
+    }
+}
+</script>
